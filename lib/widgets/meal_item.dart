@@ -35,21 +35,24 @@ class MealItem extends StatelessWidget {
         },
         child: Stack(
           children: [
-            FadeInImage(
-              placeholder: MemoryImage(kTransparentImage),
-              image: Image.network(
-                meal.imageUrl,
-                errorBuilder: (BuildContext context, Object error,
-                    StackTrace? stackTrace) {
-                  // Here, you can return any placeholder widget you want
-                  return Image.asset(
-                    'assets/images/placeholder.jpg',
-                  ); // Example placeholder image
-                },
-              ).image,
-              fit: BoxFit.cover,
-              height: 200,
-              width: double.infinity,
+            Hero(
+              tag: meal.id,
+              child: FadeInImage(
+                placeholder: MemoryImage(kTransparentImage),
+                image: Image.network(
+                  meal.imageUrl,
+                  errorBuilder: (BuildContext context, Object error,
+                      StackTrace? stackTrace) {
+                    // Here, you can return any placeholder widget you want
+                    return Image.asset(
+                      'assets/images/placeholder.jpg',
+                    ); // Example placeholder image
+                  },
+                ).image,
+                fit: BoxFit.cover,
+                height: 200,
+                width: double.infinity,
+              ),
             ),
             Positioned(
               bottom: 0,
